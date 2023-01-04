@@ -1,0 +1,163 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /api/images/:
+    get:
+      operationId: listUploadedImages
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UploadedImage'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createUploadedImage
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadedImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UploadedImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadedImage'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadedImage'
+          description: ''
+      tags:
+      - api
+  /api/images/{id}/:
+    get:
+      operationId: retrieveUploadedImage
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this uploaded image.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadedImage'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateUploadedImage
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this uploaded image.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadedImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UploadedImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadedImage'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadedImage'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateUploadedImage
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this uploaded image.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadedImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UploadedImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadedImage'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadedImage'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyUploadedImage
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this uploaded image.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+components:
+  schemas:
+    UploadedImage:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+        image:
+          type: string
+          format: binary
+        name:
+          type: string
+          maxLength: 32
+        width:
+          type: integer
+        heigth:
+          type: integer
+      required:
+      - image
+      - name
+      - width
+      - heigth
